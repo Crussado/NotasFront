@@ -5,16 +5,16 @@ import { Container, Col, Row } from 'react-bootstrap';
 
 function NotasContainer({ notas }) {
     return (
-        <Container>
-            <Row>
-                { 
+        <Container fluid='xl'>
+            <Row className='mb-4'>
+                {  
                     notas.map((nota, id) => 
-                        <Col md={ 4 } key={ id }>
-                            <NotaView nota={ nota }/>
-                        </Col>
+                    <Col md={ 6 } xl={ 4 } key={ id } className='d-flex justify-content-center'> 
+                        <NotaView nota={ nota }/>
+                    </Col>
                     )
-                }
-            </Row>
+                } 
+            </Row>     
         </Container>
     );
 }
