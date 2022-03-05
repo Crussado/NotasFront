@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Navbar, Nav } from 'react-bootstrap';
 
-function NotaHeader() { 
+function NavBar() { 
     return (
         <Navbar bg='primary' variant='dark'>
             <Navbar.Brand href='mis-notas'>Notas</Navbar.Brand>
@@ -15,4 +15,4 @@ function NotaHeader() {
     );
 }
 
-export default NotaHeader;
+export default NavBar;
