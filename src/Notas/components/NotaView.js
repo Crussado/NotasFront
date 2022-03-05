@@ -1,21 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Card, Row, Col } from 'react-bootstrap';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton } from '@mui/material/';
-import { useDispatch } from 'react-redux';
 
-import ModalConfirmacion from '../../utilities/ModalConfirmacion';
-import { DELETE_NOTA } from '../actionTypes';
 
-function NotaView({ nota }) {
-
-    const dispatch = useDispatch();
-    const borrarNota = (nota) => dispatch({ type: DELETE_NOTA, parameters: { id: nota.id } });
-
-    const [show, setShow] = useState(false);
-    const closeModal = () => setShow(false);
-    const showModal = () => setShow(true);
+function NotaView({ nota, showModal, setNotaDelete }) {
     return (
         <div>
             <Card className='mt-4 bg-warning overflow-auto' style={{width: '18rem', height: '10rem'}}>
@@ -28,14 +18,13 @@ function NotaView({ nota }) {
                     </Card.Text>
                     <Row className='justify-content-end'>
                         <Col xs={ 3 }>
-                            <IconButton onClick={ () => showModal() }>
+                            <IconButton onClick={ () => {showModal(); setNotaDelete(nota)}}>
                                 <DeleteOutlineIcon/>
                             </IconButton>
                         </Col>
                     </Row>
                 </Card.Body>
-            </Card>
-            <ModalConfirmacion show={ show } closeModal={ closeModal } success={ () => borrarNota(nota) }/>
+            </Card>            
         </div>
     );
 }
