@@ -24,7 +24,7 @@ const devNotasFailed = (state) => {
 
 const createNotaSuccess = (state, action) => {
     let newNotas = state.notas.slice();
-    const newNota = { title: action.title, body: action.body, id: action.id }
+    const newNota = { title: action.parameters.title, body: action.parameters.body, id: action.parameters.id }
     newNotas.push(newNota);
     return ({
         ...state,
@@ -56,26 +56,24 @@ const deleteNotaFailed = state => ({
 
 export default function notasReducer(state = initialState, action) {
     switch(action.type) {
-        case types.FETCH_NOTAS:
-            return actionsHandledByEpic(state);
         case types.FETCH_NOTAS_SUCCESS:
             return devNotasSuccess(state, action);
         case types.FETCH_NOTAS_FAILED:
             return devNotasFailed(state);
-        case types.CREATE_NOTA:
-            return actionsHandledByEpic(state);
         case types.CREATE_NOTA_SUCCESS:
             return createNotaSuccess(state, action);
         case types.CREATE_NOTA_FAILED:
             return createNotaFailed(state);
-        case types.DELETE_NOTA:
-            return actionsHandledByEpic(state);
         case types.DELETE_NOTA_SUCCESS:
             return deleteNotaSuccess(state, action);
         case types.DELETE_NOTA_FAILED:
             return deleteNotaFailed(state);
         case types.UPDATE_NOTA:
             return state;
+        case types.FETCH_NOTAS:
+        case types.CREATE_NOTA:
+        case types.DELETE_NOTA:
+            return actionsHandledByEpic(state);
         default:
             return state;
     }
