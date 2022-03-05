@@ -39,6 +39,7 @@ export function post(partialUrl, body, customHeaders = {}) {
     const url = `${baseUrl}${partialUrl}`;
 
     const headers = Object.assign(customHeaders);
+
     return ajax({
         method: 'POST',
         url,

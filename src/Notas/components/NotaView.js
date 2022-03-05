@@ -9,10 +9,7 @@ import ModalConfirmacion from '../../utilities/ModalConfirmacion';
 import { DELETE_NOTA } from '../actionTypes';
 
 function NotaView({ nota }) {
-    const styles = {
-        cardStyle: { width: '18rem', marginTop: '1rem', backgroundColor: 'yellow' },
-        titleStyle: { textAlign: 'center' }
-    }
+
     const dispatch = useDispatch();
     const borrarNota = (nota) => dispatch({ type: DELETE_NOTA, parameters: { id: nota.id } });
 
@@ -21,9 +18,11 @@ function NotaView({ nota }) {
     const showModal = () => setShow(true);
     return (
         <div>
-            <Card style={ styles.cardStyle }>
+            <Card className='mt-4 bg-warning overflow-auto' style={{width: '18rem', height: '10rem'}}>
                 <Card.Body>
-                    <Card.Title style={ styles.titleStyle }>{ nota.title }</Card.Title>
+                    <Card.Title className='text-center'>
+                        { nota.title }
+                    </Card.Title>
                     <Card.Text>
                         { nota.body }
                     </Card.Text>
