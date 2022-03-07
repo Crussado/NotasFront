@@ -5,7 +5,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton } from '@mui/material/';
 
 
-function NotaView({ nota, showModal, setNotaDelete }) {
+function NotaView({ nota, openModal }) {
     return (
         <div>
             <Card className='mt-4 bg-warning overflow-auto' style={{width: '18rem', height: '10rem'}}>
@@ -18,7 +18,7 @@ function NotaView({ nota, showModal, setNotaDelete }) {
                     </Card.Text>
                     <Row className='justify-content-end'>
                         <Col xs={ 3 }>
-                            <IconButton onClick={ () => {showModal(); setNotaDelete(nota)}}>
+                            <IconButton onClick={ openModal }>
                                 <DeleteOutlineIcon/>
                             </IconButton>
                         </Col>

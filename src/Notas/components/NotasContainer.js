@@ -21,7 +21,7 @@ function NotasContainer({ notas }) {
                 {  
                     notas.map((nota, id) => 
                     <Col md={ 6 } xl={ 4 } key={ id } className='d-flex justify-content-center'> 
-                        <NotaView nota={ nota } setNotaDelete={setNotaDelete} showModal={ showModal }/>
+                        <NotaView nota={ nota } openModal={ () => { setNotaDelete(nota); showModal(); } }/>
                     </Col>
                     )
                 } 
