@@ -13,6 +13,7 @@ export function deleteNotaEpic(action$) {
                     {
                         type: types.DELETE_NOTA_SUCCESS,
                         parameters: action.parameters,
+                        onSuccess: action.onSuccess()
                     },
                 )),
                 catchError((err) => (of(

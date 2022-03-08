@@ -66,7 +66,7 @@ export default function notasReducer(state = initialState, action) {
             return createNotaFailed(state);
         case types.DELETE_NOTA_SUCCESS:
             return deleteNotaSuccess(state, action);
-        case types.DELETE_NOTA_FAILED:
+        case types.DELETE_NOTA_FAILED:       
             return deleteNotaFailed(state);
         case types.UPDATE_NOTA:
             return state;

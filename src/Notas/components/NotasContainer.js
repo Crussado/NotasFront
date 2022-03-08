@@ -7,7 +7,7 @@ import { DELETE_NOTA } from '../actionTypes';
 
 function NotasContainer({ notas }) {
     const dispatch = useDispatch();
-    const borrarNota = (nota) => dispatch({ type: DELETE_NOTA, parameters: { id: nota.id } });
+    const borrarNota = (nota) => dispatch({ type: DELETE_NOTA, parameters: { id: nota.id }, onSuccess: closeModal });
 
     const [show, setShow] = useState(false);
     const closeModal = () => setShow(false);
