@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NotaView from './NotaView';
 import { Container, Col, Row } from 'react-bootstrap';
 import ModalConfirmacion from '../../utilities/ModalConfirmacion';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { DELETE_NOTA } from '../actionTypes';
+import { FETCH_NOTAS } from '../actionTypes';
 
-function NotasContainer({ notas }) {
+function NotasContainer() {
     const dispatch = useDispatch();
+    useEffect(() => { dispatch({ type: FETCH_NOTAS })}, [] );
+    const notas = useSelector((state) => state.notasReducer.notas);
+    
     const borrarNota = (nota) => dispatch({ type: DELETE_NOTA, parameters: { id: nota.id }, onSuccess: closeModal });
 
     const [show, setShow] = useState(false);
@@ -26,7 +30,7 @@ function NotasContainer({ notas }) {
                     )
                 } 
             </Row>  
-            <ModalConfirmacion show={ show } closeModal={ closeModal } success={ () => borrarNota(notaDelete) }/>   
+            <ModalConfirmacion show={ show } msj={'¿Esta seguro que quiere eliminar la nota?'} closeModal={ closeModal } success={ () => borrarNota(notaDelete) }/>   
         </Container>
     );
 }
