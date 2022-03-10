@@ -1,20 +1,20 @@
 import React from 'react';
 
 import { Modal, Button } from 'react-bootstrap';
-import { useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 
-function ModalConfirmacion({ show, closeModal, success }) {
+function ModalConfirmacion({ show, closeModal, success, msj }) {
     const disabled = useSelector((state) => state.notasReducer.apiLoading);
     return (
-        <Modal size='lg' centered show={ show }>
+        <Modal size='md' centered show={ show }>
             <Modal.Header>
                 <Modal.Title id='contained-modal-title-vcenter'>
-                    Confirmacion
+                    Confirmación
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <p>
-                    Esta seguro que desea borrar la nota?
+                    {msj}
                 </p>
             </Modal.Body>
             <Modal.Footer>

@@ -4,7 +4,6 @@ import { Card, Row, Col } from 'react-bootstrap';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton } from '@mui/material/';
 
-
 function NotaView({ nota, showModal, setNotaDelete }) {
     return (
         <div>
